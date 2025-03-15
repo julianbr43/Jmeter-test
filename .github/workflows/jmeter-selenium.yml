@@ -32,15 +32,7 @@ jobs:
           mv /tmp/jmeter-plugins/lib/ext/* jmeter/lib/ext/
           # Verificar que el plugin WebDriverSampler está instalado
           ls -l jmeter/lib/ext/
-
-      - name: 🛠️ Instalar Chrome y ChromeDriver
-        run: |
-          sudo apt install -y google-chrome-stable
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-          wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-
+        
       - name: 🔧 Registrar WebDriverSampler en JMeter
         run: |
           jmeter/bin/PluginsManagerCMD.sh install jpgc-webdriver
@@ -49,6 +41,14 @@ jobs:
       - name: 🔍 Verificar clases de JMeter
         run: |
           jmeter/bin/jmeter -n -t jmeter_selenium_test.jmx -v
+          
+      - name: 🛠️ Instalar Chrome y ChromeDriver
+        run: |
+          sudo apt install -y google-chrome-stable
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
+          wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
 
       - name: 🏃 Ejecutar pruebas de JMeter
         run: |
