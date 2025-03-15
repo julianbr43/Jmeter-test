@@ -20,9 +20,10 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y openjdk-11-jdk xvfb
-          wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz
-          tar -xzf apache-jmeter-5.5.tgz
-          mv apache-jmeter-5.5 jmeter
+          JMETER_VERSION="5.6.2"  # Última versión estable
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
+          tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
+          mv apache-jmeter-${JMETER_VERSION} jmeter
 
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
@@ -46,7 +47,7 @@ jobs:
           python selenium_test.py
 
       - name: 📊 Subir reportes de JMeter como artefacto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jmeter-report
           path: report/
