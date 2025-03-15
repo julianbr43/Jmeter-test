@@ -27,9 +27,11 @@ jobs:
           # Descargar e instalar JMeter Plugins Manager
           wget https://jmeter-plugins.org/get/ -O jmeter/lib/ext/JMeterPlugins-Manager.jar
           # Crear carpeta de plugins y descargar WebDriver Sampler
-          mkdir -p jmeter/lib/ext
-          wget -P jmeter/lib/ext https://jmeter-plugins.org/files/packages/jpgc-webdriver-3.3.zip
-          unzip jmeter/lib/ext/jpgc-webdriver-3.3.zip -d jmeter/lib/ext/
+          wget -P /tmp/ https://jmeter-plugins.org/files/packages/jpgc-webdriver-3.3.zip
+          unzip /tmp/jpgc-webdriver-3.3.zip -d /tmp/jmeter-plugins/
+          mv /tmp/jmeter-plugins/lib/ext/* jmeter/lib/ext/
+          # Verificar que el plugin WebDriverSampler está instalado
+          ls -l jmeter/lib/ext/
 
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
