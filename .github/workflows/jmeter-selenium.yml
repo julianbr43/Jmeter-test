@@ -46,7 +46,7 @@ jobs:
           python selenium_test.py
 
       - name: 📊 Subir reportes de JMeter como artefacto
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jmeter-report
           path: report/
