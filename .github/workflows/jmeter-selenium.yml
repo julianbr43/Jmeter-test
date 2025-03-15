@@ -1,0 +1,52 @@
+name: CI JMeter + Selenium
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚀 Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: 🔧 Instalar Java y JMeter
+        run: |
+          sudo apt update
+          sudo apt install -y openjdk-11-jdk xvfb
+          wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf apache-jmeter-5.5.tgz
+          mv apache-jmeter-5.5 jmeter
+
+      - name: 🛠️ Instalar Chrome y ChromeDriver
+        run: |
+          sudo apt install -y google-chrome-stable
+          wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+
+      - name: 🏃 Ejecutar pruebas de JMeter
+        run: |
+          jmeter/bin/jmeter -n -t jmeter_selenium_test.jmx -l results.jtl -e -o report/
+
+      - name: 📦 Configurar entorno virtual de Python para Selenium
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install selenium pyvirtualdisplay
+
+      - name: 🔎 Ejecutar pruebas de Selenium
+        run: |
+          python selenium_test.py
+
+      - name: 📊 Subir reportes de JMeter como artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-report
+          path: report/

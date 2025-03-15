@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="JMeter Selenium Test" enabled="true">
+      <stringProp name="TestPlan.comments">Integración de JMeter con Selenium WebDriver</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Usuarios Concurrentes" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <stringProp name="ThreadGroup.duration">30</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <jp@gc - WebDriver Sampler guiclass="WebDriverSamplerGui" testclass="WebDriverSampler" testname="Abrir Página con Selenium" enabled="true">
+          <stringProp name="WebDriverSampler.script">
+            WDS.sampleResult.sampleStart();
+            WDS.log.info("Iniciando navegador");
+            WDS.browser.get("https://www.google.com");
+            WDS.log.info("Página cargada");
+            WDS.sampleResult.sampleEnd();
+          </stringProp>
+        </jp@gc - WebDriver Sampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsTreeGui" testclass="ResultCollector" testname="Ver Resultados" enabled="true">
+          <stringProp name="filename"/>
+        </ResultCollector>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
