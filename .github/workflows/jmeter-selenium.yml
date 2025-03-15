@@ -24,10 +24,13 @@ jobs:
           wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
           tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
           mv apache-jmeter-${JMETER_VERSION} jmeter
+          wget https://jmeter-plugins.org/get/ -O jmeter/lib/ext/JMeterPlugins-Manager.jar
+          jmeter/bin/jmeter --add-plugin WebDriver
 
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
           sudo apt install -y google-chrome-stable
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
           wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
