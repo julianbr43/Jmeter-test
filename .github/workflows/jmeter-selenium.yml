@@ -41,6 +41,15 @@ jobs:
           unzip chromedriver_linux64.zip
           sudo mv chromedriver /usr/local/bin/
 
+      - name: 🔧 Registrar WebDriverSampler en JMeter
+        run: |
+          jmeter/bin/PluginsManagerCMD.sh install jpgc-webdriver
+          jmeter/bin/PluginsManagerCMD.sh status 
+
+      - name: 🔍 Verificar clases de JMeter
+        run: |
+          jmeter/bin/jmeter -n -t jmeter_selenium_test.jmx -v
+
       - name: 🏃 Ejecutar pruebas de JMeter
         run: |
           jmeter/bin/jmeter -n -t jmeter_selenium_test.jmx -l results.jtl -e -o report/
