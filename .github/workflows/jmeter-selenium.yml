@@ -25,6 +25,11 @@ jobs:
           tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
           mv apache-jmeter-${JMETER_VERSION} jmeter
 
+      - name: 📥 Instalar WebDriver Sampler
+        run: |
+          wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-3.3.zip
+          unzip jpgc-webdriver-3.3.zip -d jmeter/lib/ext/
+
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
           sudo apt install -y google-chrome-stable
