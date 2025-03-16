@@ -28,7 +28,7 @@ jobs:
       run: jmeter -v
 
     - name: Ejecutar pruebas de carga con JMeter en Demoblaze
-      run: jmeter -n -t tests/demoblaze-test.jmx -l result.jtl -e -o report
+      run: jmeter -n -t demoblaze-test.jmx -l result.jtl -e -o report
 
     - name: Subir reportes como artefacto
       uses: actions/upload-artifact@v4
