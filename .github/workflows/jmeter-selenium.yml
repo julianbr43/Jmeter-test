@@ -35,7 +35,7 @@ jobs:
         
       - name: 🔧 Registrar WebDriverSampler en JMeter
         run: |
-          jmeter/bin/PluginsManagerCMD.sh install jpgc-webdriver
+          java -cp jmeter/lib/ext/JMeterPlugins-Manager.jar org.jmeterplugins.repository.PluginManagerCMD install jpgc-webdriver
           jmeter/bin/PluginsManagerCMD.sh status 
 
       - name: 🔍 Verificar clases de JMeter
