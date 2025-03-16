@@ -20,14 +20,14 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y openjdk-11-jdk xvfb
-          JMETER_VERSION="5.3.0"  # Última versión estable
+          JMETER_VERSION="5.6.2"  # Última versión estable
           wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
           tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
           mv apache-jmeter-${JMETER_VERSION} jmeter
 
       - name: 📥 Instalar WebDriver Sampler
         run: |
-          wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-3.3.zip
+          wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-4.13.0.2.zip
           unzip jpgc-webdriver-3.3.zip -d jmeter/lib/ext/
 
       - name: 🛠️ Instalar Chrome y ChromeDriver
