@@ -18,20 +18,11 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y openjdk-11-jdk xvfb
-        JMETER_VERSION="5.4.1"  # Última versión estable
+        JMETER_VERSION="5.6.2"  # Última versión estable
         wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
         tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
         mv apache-jmeter-${JMETER_VERSION} jmeter
         echo "$(pwd)/jmeter/bin" >> $GITHUB_PATH  # Agregar JMeter al PATH
-        # Instalar JMeter Plugins Manager
-        wget -P jmeter/lib/ext https://jmeter-plugins.org/files/packages/jpgc-cmd-2.2.zip
-        unzip jmeter/lib/ext/jpgc-cmd-2.2.zip -d jmeter/lib/ext/
-        rm jmeter/lib/ext/jpgc-cmd-2.2.zip
-        
-        # Instalar plugin necesario (Standard Set)
-        wget -P jmeter/lib/ext https://jmeter-plugins.org/files/packages/jpgc-standard-2.9.zip
-        unzip jmeter/lib/ext/jpgc-standard-2.9.zip -d jmeter/lib/ext/
-        rm jmeter/lib/ext/jpgc-standard-2.9.zip
 
     - name: Verificar instalación de JMeter
       run: jmeter -v
