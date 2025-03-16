@@ -28,7 +28,7 @@ jobs:
       - name: 📥 Instalar WebDriver Sampler
         run: |
           wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-4.13.0.2.zip
-          unzip jpgc-webdriver-3.3.zip -d jmeter/lib/ext/
+          unzip jpgc-webdriver-4.13.0.2.zip -d jmeter/lib/ext/
 
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
