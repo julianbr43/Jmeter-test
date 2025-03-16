@@ -32,6 +32,15 @@ jobs:
           # Verificar si el plugin está en la carpeta correcta
           ls -l jmeter/lib/ext/ 
 
+      - name: 🔧 Instalar WebDriverSampler y dependencias
+        run: |
+          wget -P jmeter/lib/ext/ https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-webdriver/3.3/jmeter-plugins-webdriver-3.3.jar
+          wget -P jmeter/lib/ext/ https://repo1.maven.org/maven2/kg/apc/cmdrunner/2.2/cmdrunner-2.2.jar
+          wget -P jmeter/lib/ext/ https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/1.7/jmeter-plugins-manager-1.7.jar
+          
+          # Verificar archivos
+          ls -lh jmeter/lib/ext/
+
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
           sudo apt install -y google-chrome-stable
