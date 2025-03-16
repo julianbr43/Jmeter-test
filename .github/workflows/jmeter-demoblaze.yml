@@ -17,11 +17,11 @@ jobs:
     - name: Instalar JMeter
       run: |
         sudo apt update
-        sudo apt install -y openjdk-11-jdk
-        wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.2.tgz
-        tar -xvzf apache-jmeter-5.6.2.tgz
-        echo "JMETER_HOME=$(pwd)/apache-jmeter-5.6.2" >> $GITHUB_ENV
-        echo "$JMETER_HOME/bin" >> $GITHUB_PATH
+        sudo apt install -y openjdk-11-jdk xvfb
+        JMETER_VERSION="5.6.2"  # Última versión estable
+        wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz
+        tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
+        mv apache-jmeter-${JMETER_VERSION} jmeter
 
     - name: Verificar instalación de JMeter
       run: jmeter -v
