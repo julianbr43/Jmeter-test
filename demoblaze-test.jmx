@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.2">
+    <hashTree>
+        <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Demoblaze Test Plan" enabled="true">
+            <stringProp name="TestPlan.comments">Pruebas de carga para demoblaze.com</stringProp>
+            <boolProp name="TestPlan.functional_mode">false</boolProp>
+            <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+            <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                    <elementProp name="BASE_URL" elementType="Argument">
+                        <stringProp name="Argument.name">BASE_URL</stringProp>
+                        <stringProp name="Argument.value">https://demoblaze.com</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                    <elementProp name="USERNAME" elementType="Argument">
+                        <stringProp name="Argument.name">USERNAME</stringProp>
+                        <stringProp name="Argument.value">testuser</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                    <elementProp name="PASSWORD" elementType="Argument">
+                        <stringProp name="Argument.name">PASSWORD</stringProp>
+                        <stringProp name="Argument.value">password123</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                </collectionProp>
+            </elementProp>
+        </TestPlan>
+        <hashTree>
+            <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Usuarios Concurrentes" enabled="true">
+                <stringProp name="ThreadGroup.num_threads">10</stringProp>
+                <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+                <boolProp name="ThreadGroup.scheduler">false</boolProp>
+            </ThreadGroup>
+            <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cargar Home" enabled="true">
+                    <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+                    <stringProp name="HTTPSampler.protocol">https</stringProp>
+                    <stringProp name="HTTPSampler.path">/</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                </HTTPSamplerProxy>
+            </hashTree>
+        </hashTree>
+    </hashTree>
+</jmeterTestPlan>
