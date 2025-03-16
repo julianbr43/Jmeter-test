@@ -15,7 +15,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
       </ThreadGroup>
       <hashTree>
-        <WebDriverSampler guiclass="WebDriverSamplerGui" testclass="WebDriverSampler" testname="Abrir Página con Selenium" enabled="true">
+        <jp@gc - WebDriver Sampler guiclass="WebDriverSamplerGui" testclass="WebDriverSampler" testname="Abrir Página con Selenium" enabled="true">
           <stringProp name="WebDriverSampler.script">
             WDS.sampleResult.sampleStart();
             WDS.log.info("Iniciando navegador");
@@ -23,7 +23,7 @@
             WDS.log.info("Página cargada");
             WDS.sampleResult.sampleEnd();
           </stringProp>
-        </WebDriverSampler>
+        </jp@gc - WebDriver Sampler>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsTreeGui" testclass="ResultCollector" testname="Ver Resultados" enabled="true">
           <stringProp name="filename"/>
