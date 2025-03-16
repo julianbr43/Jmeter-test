@@ -25,24 +25,13 @@ jobs:
           tar -xzf apache-jmeter-${JMETER_VERSION}.tgz
           mv apache-jmeter-${JMETER_VERSION} jmeter
           # Descargar e instalar JMeter Plugins Manager
+          # Instalar JMeter Plugins Manager
           wget https://jmeter-plugins.org/get/ -O jmeter/lib/ext/JMeterPlugins-Manager.jar
-          # Crear carpeta de plugins y descargar WebDriver Sampler
-          wget -P /tmp/ https://jmeter-plugins.org/files/packages/jpgc-webdriver-3.3.zip
-          unzip /tmp/jpgc-webdriver-3.3.zip -d /tmp/jmeter-plugins/
-          mv /tmp/jmeter-plugins/lib/ext/* jmeter/lib/ext/
-          # Verificar que el plugin WebDriverSampler está instalado
-          ls -l jmeter/lib/ext/
-        
-      - name: 🔧 Registrar WebDriverSampler en JMeter
-        run: |
-          chmod +x jmeter/bin/jmeter
-          jmeter/bin/jmeter --plugin-manager install jpgc-webdriver
-          jmeter/bin/jmeter --plugin-manager list 
+          # Descargar WebDriver Sampler manualmente
+          wget -P jmeter/lib/ext/ https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-webdriver/3.3/jmeter-plugins-webdriver-3.3.jar
+          # Verificar si el plugin está en la carpeta correcta
+          ls -l jmeter/lib/ext/ 
 
-      - name: 🔍 Verificar clases de JMeter
-        run: |
-          jmeter/bin/jmeter -n -t jmeter_selenium_test.jmx -v
-          
       - name: 🛠️ Instalar Chrome y ChromeDriver
         run: |
           sudo apt install -y google-chrome-stable
