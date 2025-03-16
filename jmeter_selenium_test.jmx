@@ -26,7 +26,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
       </ThreadGroup>
       <hashTree>
-        <kg.apc - WebDriver Sampler guiclass="WebDriverSamplerGui" testclass="WebDriverSampler" testname="Abrir Página con Selenium" enabled="true">
+        <kg.apc.jmeter.webdriver.sampler guiclass="WebDriverSamplerGui" testclass="WebDriverSampler" testname="Abrir Página con Selenium" enabled="true">
           <stringProp name="WebDriverSampler.script">
             // Iniciar medición
             WDS.sampleResult.sampleStart();
@@ -45,7 +45,7 @@
             // Finalizar medición
             WDS.sampleResult.sampleEnd();
           </stringProp>
-        </kg.apc - WebDriver Sampler>
+        </kg.apc.jmeter.webdriver.sampler>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsTreeGui" testclass="ResultCollector" testname="Ver Resultados" enabled="true">
           <stringProp name="filename"/>
